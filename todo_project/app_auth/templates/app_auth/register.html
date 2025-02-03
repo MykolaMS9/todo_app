@@ -1,0 +1,74 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<!--<h2>Register User</h2>-->
+<!--{% if form.errors and form.non_field_errors %}-->
+<!--<div class="alert alert-danger" role="alert">-->
+<!--    {{ form.non_field_errors }}-->
+<!--</div>-->
+<!--{% endif %}-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Username: {{ form.username }}</label>-->
+<!--        <span>{{ form.errors.username }}</span>-->
+<!--    </div>-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Email: {{ form.email }}</label>-->
+<!--        <span>{{ form.errors.email }}</span>-->
+<!--    </div>-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Password: {{ form.password1 }}</label>-->
+<!--        <span>{{ form.errors.password1 }}</span>-->
+<!--    </div>-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Repeat password: {{ form.password2 }}</label>-->
+<!--        <span>{{ form.errors.password2 }}</span>-->
+<!--    </div>-->
+<!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--    <button type="reset" class="btn btn-secondary">Reset</button>-->
+<!--</form>-->
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h2 class="text-center mb-3">Register User</h2>
+
+        {% if form.errors and form.non_field_errors %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+                <div class="text-danger small">{{ form.errors.username }}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                {{ form.email }}
+                <div class="text-danger small">{{ form.errors.email }}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                {{ form.password1 }}
+                <div class="text-danger small">{{ form.errors.password1 }}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Repeat password</label>
+                {{ form.password2 }}
+                <div class="text-danger small">{{ form.errors.password2 }}</div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'todo/base.html' %}
+{% load humanize %}
+{% block content %}
+
+<!--TODO list-->
+
+<nav aria-label="Page navigation">
+    <div class="d-flex justify-content-between align-items-center">
+        <ul class="pagination pb-1 justify-content-center flex-grow-1 m-0">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1&cards_per_page={{ cards_per_page }}" aria-label="First">
+                    <i class="fas fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}&cards_per_page={{ cards_per_page }}" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
+            {% endif %}
+
+            <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}&cards_per_page={{ cards_per_page }}" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&cards_per_page={{ cards_per_page }}" aria-label="Next">
+                    <i class="fas fa-angle-double-right"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="ms-3">
+            <div class="d-flex align-items-center">
+                <form method="get" action="{% url 'main' %}">
+            <label for="cards_per_page" class="me-2">Cards per page:</label>
+            <input type="number" id="cards_per_page" name="cards_per_page" class="form-control me-2" value="{{ request.GET.cards_per_page|default:9 }}" min="1" style="width: 80px;">
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for todo in todo_list %}
+    <div class="col">
+        <a class="text-decoration-none" href="{% url 'edit_todo' todo.id %}">
+            <div class="card shadow-sm {% if todo.completed %} bg-success bg-gradient {% else %} bg-light bg-gradient {% endif %}">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-uppercase">{{ todo.title }}</h5>
+                    <hr>
+                    <p class="card-text">{{ todo.description | truncatechars:100 }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-body-secondary">{{ todo.published|naturaltime }}</small>
+                        {% if todo.completed %}
+                        <span class="badge bg-primary">Completed</span>
+                        {% else %}
+                        <span class="badge bg-warning">Pending</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+
+<!--{% url 'detail' todo.id %}-->

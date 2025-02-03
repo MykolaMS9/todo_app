@@ -1,0 +1,5 @@
+# ToDo Application
+
+(Live Example)[https://todo-app-frontend-ten.vercel.app/]
+
+This project provides a set of asynchronous Python functions to organize, process, and clean up files and directories. It includes features such as file normalization, archive extraction, directory cleanup, and logging of file extensions.

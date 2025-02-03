@@ -1,0 +1,21 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Organize your ToDos easily!</h1>
+    <p class="lead">This site will help you manage your affairs, not forget important tasks and achieve more!</p>
+
+    <div class="mt-4">
+        <a href="{% url 'main' %}" class="btn btn-primary btn-lg">View ToDo</a>
+        <a href="{% url 'create_todo' %}" class="btn btn-success btn-lg">Add ToDo</a>
+    </div>
+</div>
+
+<footer class="text-center mt-5 p-4 bg-light">
+    <p>&copy; 2024 To-Do App | Організуйте свій день ефективно</p>
+</footer>
+
+{% endblock %}
+
+
+<!--{% url 'detail' todo.id %}-->

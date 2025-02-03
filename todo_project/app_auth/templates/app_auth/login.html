@@ -1,0 +1,49 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h2 class="text-center mb-3">Please, Login</h2>
+
+        <div class="text-center mb-3">
+            <p class="mb-1">Don't have an account?</p>
+            <a class="btn btn-warning btn-sm" href="{% url 'app_auth:signup' %}">Sign-up</a>
+        </div>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if form.errors and form.non_field_errors %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+                <div class="text-danger small">{{ form.errors.username }}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                {{ form.password }}
+                <div class="text-danger small">{{ form.errors.password }}</div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

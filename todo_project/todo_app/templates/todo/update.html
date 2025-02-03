@@ -1,0 +1,37 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h2 class="text-center mb-3">Update Todo</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                {{ form.title }}
+                <div class="text-danger small">{{ form.errors.title }}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                {{ form.description }}
+                <div class="text-danger small">{{ form.errors.description }}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-check-label">Completed</label>
+                {{ form.completed }}
+                <div class="text-danger small">{{ form.errors.completed }}</div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{% url 'delete_todo' object.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'main' %}" class="btn btn-secondary">Get back</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+<!--{% url 'detail' todo.id %}-->

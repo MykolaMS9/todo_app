@@ -1,0 +1,10 @@
+.page-item.active .page-link {
+  color: #fff !important;
+  background: #3c3a5d !important;
+}
+
+.pagination .page-link {
+    background: white;
+    color: black;
+}
+
