@@ -29,8 +29,8 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "little-thunder-9694.fly.dev"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost", "https://little-thunder-9694.fly.dev"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "todo-9dd4.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost", "https://todo-9dd4.onrender.com"]
 
 
 # Application definition
