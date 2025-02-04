@@ -95,7 +95,6 @@ class TodoListView(LoginRequiredMixin, ListView):
         self.cards_per_page = UserSettings.objects.get(
             user=self.request.user
         ).cards_per_page
-        print(f"query {self.cards_per_page}")
         return Todo.objects.filter(user=self.request.user)
 
     def get_data(self):
