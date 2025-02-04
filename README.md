@@ -4,4 +4,4 @@
 
 ## Description
 
-A simple Todo Application with a simple UI and a simple backend.
+A simple Todo Application with a simple UI and a backend.

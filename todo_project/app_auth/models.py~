@@ -24,5 +24,4 @@ class CustomUser(AbstractUser):
         user = CustomUser.objects.create_user(username="john_doe", email="john@example.com", password="password123")
         print(user.email)  # Outputs: john@example.com
     """
-
     email = models.EmailField(unique=True)

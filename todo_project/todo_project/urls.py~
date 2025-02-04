@@ -21,6 +21,13 @@ Path Definitions:
     - /app_auth/: Includes the URL patterns from the `app_auth` application (app_auth.urls).
 4. **MEDIA_URL**:
     - MEDIA_URL: Serves media files during development using Django's static files handler.
+
+
+Path Definitions:
+- /admin/: Routes to the Django admin site for managing the application (admin.site.urls).
+- /: Includes the URL patterns from the `todo_app` application (todo_app.urls).
+- /app_auth/: Includes the URL patterns from the `app_auth` application (app_auth.urls).
+- MEDIA_URL: Serves media files during development using Django's static files handler.
 """
 urlpatterns = [
     path("admin/", admin.site.urls),
