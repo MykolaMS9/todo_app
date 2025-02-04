@@ -8,3 +8,13 @@
     color: black;
 }
 
+.no-arrows::-webkit-outer-spin-button,
+  .no-arrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Для Firefox */
+  .no-arrows {
+    -moz-appearance: textfield;
+  }

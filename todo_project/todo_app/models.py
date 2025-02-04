@@ -18,3 +18,11 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserSettings(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cards_per_page = models.IntegerField(default=9)
+
+    def __str__(self):
+        return self.user
